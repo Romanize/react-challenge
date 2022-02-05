@@ -1,6 +1,6 @@
 import { Button, Container, Flex, FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
 import { Field, FieldProps, Form, Formik } from "formik";
-import { FC, useEffect } from "react";
+import { FC, useLayoutEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { Layout } from "../../components";
@@ -21,7 +21,7 @@ export const UserForm: FC = () => {
   const isLoading = loading === LoadingType.pending;
 
   // Redirect if id doesnt match any user
-  useEffect(() => {
+  useLayoutEffect(() => {
     // We can also try to ask api for a single user, and act accordingly
     if (!editableUser && !isNewUser && !isLoading) {
       navigate("/404", { replace: true });

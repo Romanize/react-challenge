@@ -57,7 +57,7 @@ export const Dashboard: FC = () => {
             </Center>
             <Spacer />
             <Center>
-              <Wrap spacing={5}>
+              <Wrap spacing={2}>
                 <Button bg="green.300" onClick={handleSort} leftIcon={getSortIcon()}>
                   SORT
                 </Button>
