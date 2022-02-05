@@ -4,9 +4,9 @@ import { User } from "../types/types";
 
 // We can do analytics, or save logs on server here.
 export class LoggerService {
-  user: User
+  user: User;
 
-  constructor (user: User) {
+  constructor(user: User) {
     this.user = user;
   }
 

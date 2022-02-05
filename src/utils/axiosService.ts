@@ -4,7 +4,7 @@ import { LoggerService } from "./LoggerService";
 
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
-})
+});
 
 axiosInstance.interceptors.response.use(
   (response) => {
@@ -14,4 +14,5 @@ axiosInstance.interceptors.response.use(
   (error) => {
     LoggerService.error(error);
     return Promise.reject(error);
-  })
+  }
+);
