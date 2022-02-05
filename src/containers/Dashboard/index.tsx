@@ -1,17 +1,15 @@
 import { Button, Container, Flex, Heading, VStack, Box, Center, Spacer } from "@chakra-ui/react";
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import { Layout, UserRow } from "../../components";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { asyncFetchUsers } from "../../redux/slices/usersSlice";
+import { useAppSelector } from "../../redux/hooks";
+import { LoadingType } from "../../types/types";
 
 export const Dashboard: FC = () => {
-  const { users } = useAppSelector((state) => state.userSlice);
-  const dispatch = useAppDispatch();
+  const { users, loading } = useAppSelector((state) => state.userSlice);
+  const navigate = useNavigate();
 
-  // we can prevent here re renders validating either Loaading or data in reducer
-  useEffect(() => {
-    dispatch(asyncFetchUsers());
-  }, []);
+  const isLoading = loading === LoadingType.pending;
 
   return (
     <Layout title="Dashboard">
@@ -25,15 +23,23 @@ export const Dashboard: FC = () => {
             </Center>
             <Spacer />
             <Center>
-              <Button>CREATE</Button>
+              <Button bg="blue.300" onClick={() => navigate("/user/create")}>
+                CREATE
+              </Button>
             </Center>
           </Flex>
         </Box>
-        <VStack padding={2} as="ul">
-          {users.map((user) => (
-            <UserRow key={user.id.toString()} user={user} />
-          ))}
-        </VStack>
+        {!isLoading ? (
+          <VStack paddingY={5} as="ul">
+            {users.length ? (
+              users.map((user) => <UserRow key={user.id.toString()} user={user} />)
+            ) : (
+              <Heading>There are no users on the list</Heading>
+            )}
+          </VStack>
+        ) : (
+          <Heading as="h2">Loading...</Heading>
+        )}
       </Container>
     </Layout>
   );

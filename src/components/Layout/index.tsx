@@ -7,7 +7,7 @@ type LayoutType = {
 
 export const Layout: FC<LayoutType> = ({ children, title }) => {
   return (
-    <Grid templateColumns="1fr" templateRows="100px 1fr" h="100%">
+    <Grid templateColumns="1fr" templateRows="100px 1fr" h="100%" paddingX={5}>
       <Center>
         <Heading as="h1" size="2xl">
           {title}

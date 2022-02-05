@@ -30,3 +30,9 @@ export interface User {
   website: string;
   company: UserCompany;
 }
+
+// Forms
+export interface UserFormValues {
+  name: string;
+  email: string;
+}

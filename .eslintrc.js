@@ -34,5 +34,6 @@ module.exports = {
     "arrow-body-style": 0,
     "react/function-component-definition": [2, { namedComponents: "arrow-function" }],
     "prettier/prettier": 2,
+    "react/jsx-props-no-spreading": 2,
   },
 };
