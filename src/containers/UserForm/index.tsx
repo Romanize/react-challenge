@@ -22,6 +22,7 @@ export const UserForm: FC = () => {
 
   // Redirect if id doesnt match any user
   useEffect(() => {
+    // We can also try to ask api for a single user, and act accordingly
     if (!editableUser && !isNewUser && !isLoading) {
       navigate("/404", { replace: true });
     }
