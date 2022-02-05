@@ -26,7 +26,7 @@ export const Dashboard: FC = () => {
 
   useEffect(() => {
     if (!isLoading) sortUsers();
-  }, [isLoading, sortOrder]);
+  }, [isLoading, sortOrder, users]);
 
   const handleSort = () => {
     if (sortOrder === 0) setSortOrder(1);
